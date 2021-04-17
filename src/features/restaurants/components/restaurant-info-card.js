@@ -13,25 +13,34 @@ import {
   Rating,
 } from "./restaurant-info-card.styles";
 
-export default function RestaurantsInfoCard({
-  name = "Restaurant Name",
-  address = "Restaurant Address",
-  icon = "https://maps.gstatic.com/mapfiles/place_api/icons/wine-71.png",
-  rating = 4,
-  isOpen = true,
-  isClosedTemporarily = true,
-}) {
+export default function RestaurantsInfoCard({ restaurant = [] }) {
+  const {
+    name = "Restaurant Name",
+    address = "Restaurant Address",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/wine-71.png",
+    photos = [],
+    rating = 3,
+    isOpen = true,
+    placeId,
+    isClosedTemporarily = true,
+  } = restaurant;
+
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover source={{ uri: "https://picsum.photos/1000" }} />
+      <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <CustomText variant="label">{name}</CustomText>
         <Section>
           <SectionOne>
             <Rating>
-              {ratingArray.map((index) => (
-                <SvgXml key={index} xml={star} width={20} height={20} />
+              {ratingArray.map((_, index) => (
+                <SvgXml
+                  key={`${placeId} - ${index}`}
+                  xml={star}
+                  width={20}
+                  height={20}
+                />
               ))}
             </Rating>
           </SectionOne>

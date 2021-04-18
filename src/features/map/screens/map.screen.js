@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import SearchBox from "../components/search.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LocationContext } from "../../../services/location/location.context";
-import MapCallout from "../components/map-callout";
+import CompactRestaurantInfo from "../components/compact-restaurant-info";
 
 const Map = styled(MapView)`
   height: 100%;
@@ -49,7 +49,7 @@ const MapScreen = ({ navigation }) => {
                   navigation.navigate("RestaurantDetails", restaurant)
                 }
               >
-                <MapCallout restaurant={restaurant} />
+                <CompactRestaurantInfo isMap restaurant={restaurant} />
               </MapView.Callout>
             </MapView.Marker>
           );

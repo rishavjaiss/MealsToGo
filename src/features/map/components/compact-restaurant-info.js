@@ -22,10 +22,10 @@ const CompactWebView = styled(WebView)`
 
 const isAndroid = Platform.OS === "android";
 
-const MapCallout = ({ restaurant }) => {
+const CompactRestaurantInfo = ({ restaurant, isMap }) => {
   return (
     <Item>
-      {isAndroid ? (
+      {isAndroid && isMap ? (
         <CompactWebView source={{ uri: restaurant.photos[0] }} />
       ) : (
         <CompactImage source={{ uri: restaurant.photos[0] }} />
@@ -37,4 +37,4 @@ const MapCallout = ({ restaurant }) => {
   );
 };
 
-export default MapCallout;
+export default CompactRestaurantInfo;

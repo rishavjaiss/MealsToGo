@@ -12,6 +12,7 @@ import {
   SectionTwo,
   Rating,
 } from "./restaurant-info-card.styles";
+import Favourite from "../../../components/favourites/favourites.component";
 
 export default function RestaurantsInfoCard({ restaurant = [] }) {
   const {
@@ -28,6 +29,7 @@ export default function RestaurantsInfoCard({ restaurant = [] }) {
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
   return (
     <RestaurantCard elevation={5}>
+      <Favourite restaurant={restaurant} />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <CustomText variant="label">{name}</CustomText>

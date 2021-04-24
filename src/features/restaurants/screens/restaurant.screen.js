@@ -8,6 +8,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import SearchBox from "../components/search.component";
 import FavouritesBar from "../../../components/favourites/favourites-bar.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 16 },
@@ -43,7 +44,9 @@ export default function RestaurantsScreen({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("RestaurantDetails", item)}
           >
-            <RestaurantsInfoCard restaurant={item} />
+            <FadeInView>
+              <RestaurantsInfoCard restaurant={item} />
+            </FadeInView>
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.name}

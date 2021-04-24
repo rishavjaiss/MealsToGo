@@ -16,7 +16,7 @@ const AccountScreen = ({ navigation }) => {
       <AnimationWrapper>
         <Image
           style={{ width: 100, height: 100 }}
-          source={require("../../../../assets/foodtoss.gif")}
+          source={require("../../../../assets/accounts-banner.jpg")}
         />
       </AnimationWrapper>
       <Title>Meals To Go</Title>

@@ -10,7 +10,9 @@ const FavouritesList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 16 },
 })``;
 const NoFavouritesArea = styled.View`
+  flex: 1;
   align-items: center;
+  justify-content: center;
 `;
 
 const FavouritesScreen = ({ navigation }) => {
@@ -31,7 +33,7 @@ const FavouritesScreen = ({ navigation }) => {
         />
       ) : (
         <NoFavouritesArea>
-          <CustomText>No Favs yet!</CustomText>
+          <CustomText>Oops, No Favs!</CustomText>
         </NoFavouritesArea>
       )}
     </SafeAreaViewContainer>

@@ -13,7 +13,7 @@ export const AccountBackground = styled.ImageBackground.attrs({
 
 export const AnimationWrapper = styled.View`
   position: absolute;
-  bottom: 65%;
+  bottom: 70%;
   padding: ${(props) => props.theme.space[4]};
 `;
 

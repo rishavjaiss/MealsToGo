@@ -7,7 +7,7 @@ export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {

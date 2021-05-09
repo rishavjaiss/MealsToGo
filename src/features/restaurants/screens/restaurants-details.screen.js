@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RestaurantsInfoCard from "../components/restaurant-info-card";
-import { List } from "react-native-paper";
-import { ScrollView } from "react-native";
+import { List, Button } from "react-native-paper";
+import { View, ScrollView } from "react-native";
+import styled from "styled-components/native";
+import { colors } from "../../../infrastructure/theme/colors";
+import { CartContext } from "../../../services/cart/cart.context";
 
-const RestaurantDetailsScreen = ({ route }) => {
+const OrderButton = styled(Button).attrs({
+  color: colors.brand.primary,
+})`
+  padding: ${(props) => props.theme.space[2]};
+`;
+
+const RestaurantDetailsScreen = ({ navigation, route }) => {
   const item = route.params;
+  const { setRestaurant, setCart } = useContext(CartContext);
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
@@ -55,6 +65,19 @@ const RestaurantDetailsScreen = ({ route }) => {
           <List.Item title="Coke" />
           <List.Item title="Fanta" />
         </List.Accordion>
+        <View style={{ margin: 20 }}>
+          <OrderButton
+            icon="cash-usd"
+            mode="contained"
+            onPress={() => {
+              setCart({ item: "Special", price: 1299 });
+              setRestaurant(item);
+              navigation.navigate("Checkout");
+            }}
+          >
+            Order Special only $12.99!
+          </OrderButton>
+        </View>
       </ScrollView>
     </>
   );
